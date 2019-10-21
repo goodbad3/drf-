@@ -1,2 +1,5 @@
 python manage.py migrate
-python manage.py runserver 8006
+python manage.py runserver 8004
+social_core这里面有写东西需改改，已经改了，hehe
+http://127.0.0.1:8004/complete/weibo/
+http://127.0.0.1:8004/login/weibo/
