@@ -1,0 +1,14 @@
+https://blog.starmeow.cn/feature/11/
+**1
+删除数据库中 除了auth_user的其他表，然后重新来一次
+错了，应该把表全部删除
+**2
+先迁移，在移动
+**3
+Django 使用createsuperuser创建超级用户后不能登录后台的解决方案
+https://blog.csdn.net/yuxuemu/article/details/84952734
+
+
+
+
+
