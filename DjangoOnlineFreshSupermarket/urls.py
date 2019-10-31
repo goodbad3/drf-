@@ -46,7 +46,7 @@ urlpatterns = [
     path('docs/', include_docs_urls(title='DRF文档')),
 
     # 支付宝通知接口
-    path('alipay/return/', AliPayView.as_view(), name='alipay'),
+    path('alipay/return/', AliPayView.as_view(), name='alipay'),#支付宝
 
     # 使用Django原生的TemplateView渲染index模板
     path('index/', TemplateView.as_view(template_name='index.html'), name='index'),

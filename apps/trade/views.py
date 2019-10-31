@@ -115,7 +115,8 @@ class OrderInfoViewSet(mixins.ListModelMixin, mixins.CreateModelMixin, mixins.Re
             goods.save()
         instance.delete()
 
-
+#在 apps/trade/views.py 增加一个API视图，用于处理支付宝的返回
+#支付,注意 http://
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from utils.alipay import AliPay, get_server_ip

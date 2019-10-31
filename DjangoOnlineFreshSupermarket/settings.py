@@ -212,8 +212,13 @@ SIMPLE_JWT = {
     'REFRESH_TOKEN_LIFETIME': timedelta(days=15),
 }
 
+#支付宝项目文档
+#https://blog.starmeow.cn/detail/6da9003b743b65f4c0ccd295cc484e57/
+#https://blog.starmeow.cn/detail/9b04d152845ec0a378394003c96da594/
+#https://blog.starmeow.cn/detail/be83ab3ecd0db773eb2dc1b0a17836a1/
+
 # 支付宝相关配置
-app_id = "2016100900646609"
+app_id = "2016092600602747"
 alipay_debug = True
 app_private_key_path = os.path.join(BASE_DIR, 'apps/trade/keys/private_key_2048.txt')
 alipay_public_key_path = os.path.join(BASE_DIR, "apps/trade/keys/alipay_key_2048.txt")

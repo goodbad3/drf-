@@ -3,3 +3,7 @@ python manage.py runserver 8004
 social_core这里面有写东西需改改，已经改了，hehe
 http://127.0.0.1:8004/complete/weibo/
 http://127.0.0.1:8004/login/weibo/
+
+python manage.py changepassword root
+#在 http://xx.ip.ip.xx:8000/orderinfo/ 中POST创建一条新的订单，不支付
+#server_ip=xx.ip.ip.xx
