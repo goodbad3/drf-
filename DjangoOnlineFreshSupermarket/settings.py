@@ -178,6 +178,7 @@ REST_FRAMEWORK = {
         # 'rest_framework.authentication.TokenAuthentication',  # TokenAuthentication，取消全局token，放在视图中进行
         # 'rest_framework_simplejwt.authentication.JWTAuthentication',  # djangorestframework_simplejwt JWT认证
     ),
+    #限速
     # throttle对接口访问限速
     'DEFAULT_THROTTLE_CLASSES': [
         # 'rest_framework.throttling.AnonRateThrottle',  # 用户未登录请求限速，通过IP地址判断
@@ -190,6 +191,8 @@ REST_FRAMEWORK = {
         'goods_list': '600/minute'
     }
 }
+#限速
+#https://www.jianshu.com/p/b5f1dfa50b53
 
 
 # 跨域CORS设置

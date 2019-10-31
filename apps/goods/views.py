@@ -10,7 +10,7 @@ from .models import Goods, GoodsCategory, Banner
 from .serializers import GoodsSerializer, CategorySerializer, ParentCategorySerializer, BannerSerializer, IndexCategoryGoodsSerializer
 from .filters import GoodsFilter
 from rest_framework_extensions.cache.mixins import CacheResponseMixin
-from rest_framework.throttling import UserRateThrottle, AnonRateThrottle
+from rest_framework.throttling import UserRateThrottle, AnonRateThrottle#限速
 
 
 class GoodsPagination(PageNumberPagination):
@@ -47,7 +47,7 @@ class GoodsListViewSet(CacheResponseMixin, mixins.ListModelMixin, mixins.Retriev
     # authentication_classes = (TokenAuthentication, )  # 只在本视图中验证Token
     search_fields = ('name', 'goods_desc', 'category__name')  # 搜索字段
     ordering_fields = ('click_num', 'sold_num', 'shop_price')  # 排序
-    # throttle_classes = [UserRateThrottle, AnonRateThrottle]  # DRF默认限速类，可以仿照写自己的限速类
+    # throttle_classes = [UserRateThrottle, AnonRateThrottle]  # DRF默认限速类，可以仿照写自己的限速类    #限速
     throttle_scope = 'goods_list'
 
     def retrieve(self, request, *args, **kwargs):
