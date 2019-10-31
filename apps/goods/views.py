@@ -9,7 +9,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from .models import Goods, GoodsCategory, Banner
 from .serializers import GoodsSerializer, CategorySerializer, ParentCategorySerializer, BannerSerializer, IndexCategoryGoodsSerializer
 from .filters import GoodsFilter
-from rest_framework_extensions.cache.mixins import CacheResponseMixin
+from rest_framework_extensions.cache.mixins import CacheResponseMixin#缓存
 from rest_framework.throttling import UserRateThrottle, AnonRateThrottle#限速
 
 
@@ -31,7 +31,7 @@ class GoodsListView(generics.ListAPIView):
     pagination_class = GoodsPagination
 
 
-class GoodsListViewSet(CacheResponseMixin, mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
+class GoodsListViewSet(CacheResponseMixin, mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):#缓存
     """
     list:
         显示商品列表，分页、过滤、搜索、排序

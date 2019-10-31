@@ -218,11 +218,15 @@ alipay_debug = True
 app_private_key_path = os.path.join(BASE_DIR, 'apps/trade/keys/private_key_2048.txt')
 alipay_public_key_path = os.path.join(BASE_DIR, "apps/trade/keys/alipay_key_2048.txt")
 
+## 缓存文档
+#https://www.cnblogs.com/weihengblog/articles/9478359.html
 # drf-extensions配置
 REST_FRAMEWORK_EXTENSIONS = {
     'DEFAULT_CACHE_RESPONSE_TIMEOUT': 60 * 10  # 缓存全局过期时间（60 * 10 表示10分钟）
 }
 
+#缓存文档
+#https://www.jianshu.com/p/b5857c31f799
 # 配置 django-redis做缓存后端
 CACHES = {
     "default": {
