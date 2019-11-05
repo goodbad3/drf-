@@ -7,3 +7,22 @@ http://127.0.0.1:8004/login/weibo/
 python manage.py changepassword root
 #在 http://xx.ip.ip.xx:8000/orderinfo/ 中POST创建一条新的订单，不支付
 #server_ip=xx.ip.ip.xx
+
+
+
+12.用户登录之DRF Token认证登录原理和使用方法
+https://blog.starmeow.cn/detail/5878a7ab84fb43402106c575658472fa/
+13.JWT用户认证原理配置，Vue登录接口调试
+https://blog.starmeow.cn/detail/006f52e9102a8d3be2fe5614f42ba989/
+14.用户注册发送短信验证码、登录字段验证
+https://blog.starmeow.cn/detail/fc221309746013ac554571fbd180e1c8/
+15.用户注册使用信号量实现密码加密
+https://blog.starmeow.cn/detail/4c5bde74a8f110656874902f07378009/
+16.Vue中注册、退出功能交互
+https://blog.starmeow.cn/detail/cedebb6e872f539bef8c3f919874e9d7/
+
+django-rest-framework(实战篇)——用户手机注册功能实现
+https://www.jianshu.com/p/ff85b77f4e88
+
+
+

@@ -8,7 +8,7 @@ from users.models import VerifyCode
 
 User = get_user_model()
 
-
+# 序列化类VerifyCodeSerializer验证手机号
 class VerifyCodeSerializer(serializers.Serializer):
     """"
     不用ModelSerializer原因：发送验证码只需要提交手机号码
@@ -39,7 +39,13 @@ class VerifyCodeSerializer(serializers.Serializer):
 
         return mobile
 
-
+# django-rest-framework(实战篇)——用户手机注册功能实现
+# 文档
+#https://www.jianshu.com/p/ff85b77f4e88
+# 编写用户注册接口
+# 创建用户
+# 创建用户测试序列化UserSerializer
+# 这个Serializer中直接继承ModelSerializer，并添加code这个字段，用于验证验证码是否正确，如果正确，则在validate(self, attrs)函数中删除该字段的键值，并把username赋值给mobile
 class UserSerializer(serializers.ModelSerializer):
     code = serializers.CharField(required=True,
                                  min_length=4,
@@ -53,17 +59,20 @@ class UserSerializer(serializers.ModelSerializer):
                                      'min_length': '验证码格式不正确',
                                      'max_length': '验证码格式不正确',
                                  })
+    # 其中有个参数叫write_only，这个字段的意思是：将此设置为True，以确保在更新或创建实例时可以使用该字段，但在序列化表示时不包括该字段，默认为False
     username = serializers.CharField(required=True,
                                      allow_blank=False,
                                      help_text='用户名',
                                      label='用户名',
                                      validators=[UniqueValidator(queryset=User.objects.all(), message='用户已存在')])
+    # validators=[UniqueValidator(queryset=User.objects.all(), message='用户已存在')]中该字段进行添加时，从User.objects.all()验证唯一性，如果已存在，则提示message中的内容
     password = serializers.CharField(required=True,
                                      help_text='密码',
                                      label='密码',
-                                     write_only=True,
+                                     write_only=True,#序列化password字段增加write_only参数 #但是上方password字段也被显示出来了，这显然是不合理的，所以也需要将password添加
                                      style={'input_type': 'password'})
-
+    # 一个键值对字典，可用于控制呈现器应如何呈现字段。例如这些的密码想要不显示，则进行如下配置，在UserSerializer中增加password字段，并配置它的style
+    # 增加password字段style参数隐藏密码显示
     def validate_code(self, code):
         # 验证code
         # self.initial_data 为用户前端传过来的所有值
@@ -96,6 +105,7 @@ class UserSerializer(serializers.ModelSerializer):
         :return:
         """
         attrs['mobile'] = attrs['username']  # mobile不需要前端传过来，就直接后台取username中的值填充
+        # 意思是我注册的时候，只填username字段，mobile字段可以隐藏了
         del attrs['code']  # 删除不需要的code字段
         return attrs
 

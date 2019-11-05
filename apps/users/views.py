@@ -15,7 +15,8 @@ from .models import VerifyCode
 
 User = get_user_model()
 
-
+#13.JWT用户认证原理配置，Vue登录接口调试
+#增加用户名和手机号登录功能
 class CustomBackend(ModelBackend):
     """
     自定义用户登录，可以使用用户名和手机登录，重写authenticate方法
@@ -29,7 +30,7 @@ class CustomBackend(ModelBackend):
         except Exception as e:
             return None
 
-
+# 新增视图生成验证码发送
 class SendSmsCodeViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
     """
     发送短信验证码
@@ -113,6 +114,9 @@ class UserViewSet(mixins.CreateModelMixin, mixins.RetrieveModelMixin, mixins.Upd
             return []
         else:
             return []
+# 注册有两种模式：一是注册完成，自己跳转到登录页面登录；二是注册完成后就直接登录了。
+# 第二种：如果注册完成就直接登录，就需要后端返回一个token。
+# 现使用第二种方法。注册完成后登录，并跳转到首页。但是后端并没有写返回token的接口。就需要在注册视图中UserViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet)重载mixins.CreateModelMixin的create(self, request, *args, **kwargs)函数。
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
